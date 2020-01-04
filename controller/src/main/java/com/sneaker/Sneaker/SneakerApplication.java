@@ -1,13 +1,13 @@
-package com.sneaker.controller;
+package com.sneaker.Sneaker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ControllerApplication {
+public class SneakerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ControllerApplication.class, args);
+		SpringApplication.run(SneakerApplication.class, args);
 	}
 
 }

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sneaker</groupId>
-	<artifactId>controller</artifactId>
+	<artifactId>Sneaker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>controller</name>
+	<name>Sneaker</name>
 	<description>sneakers project</description>
 
 	<properties>
