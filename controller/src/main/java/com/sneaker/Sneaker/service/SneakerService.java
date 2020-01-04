@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class SneakerService {
@@ -24,4 +26,17 @@ public class SneakerService {
     public List<Sneaker> getAllSneaker() {
         return sneakerDao.selectAllSneaker();
     }
+
+    public Optional<Sneaker> getSneakerById(UUID id){
+        return sneakerDao.selectSneakerById(id);
+    }
+
+    public int deleteSneaker(UUID id){
+        return sneakerDao.deleteSneakerById(id);
+    }
+
+    public int updateSneaker(UUID id, Sneaker newSneaker){
+        return sneakerDao.updateSneakerById(id, newSneaker);
+    }
+
 }
