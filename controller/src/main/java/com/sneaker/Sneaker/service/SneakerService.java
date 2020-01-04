@@ -16,7 +16,7 @@ public class SneakerService {
     private final SneakerDao sneakerDao;
 
     @Autowired
-    public SneakerService(@Qualifier("fakeDao") SneakerDao sneakerDao) {
+    public SneakerService(@Qualifier("postgres") SneakerDao sneakerDao) {
         this.sneakerDao = sneakerDao;
     }
 
