@@ -1,4 +1,4 @@
-package com.sneaker.controller;
+package com.sneaker.Sneaker;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ControllerApplicationTests {
+public class SneakerApplicationTests {
 
 	@Test
 	public void contextLoads() {
