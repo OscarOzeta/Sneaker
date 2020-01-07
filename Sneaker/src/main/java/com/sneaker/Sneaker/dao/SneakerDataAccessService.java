@@ -48,6 +48,14 @@ public class SneakerDataAccessService implements SneakerDao {
 
     @Override
     public Optional<Sneaker> selectSneakerById(UUID id) {
-        return Optional.empty();
+        final String sql = "SELECT id, name, price, website FROM sneaker WHERE id = ?";
+        Sneaker sneaker = jdbcTemplate.queryForObject(sql, new Object[]{id}, (resultSet, i) -> {
+            UUID sneakerId = UUID.fromString(resultSet.getString("id"));
+            String name = resultSet.getString("name");
+            double price = resultSet.getDouble("price");
+            String website = resultSet.getString("website");
+            return new Sneaker(sneakerId, name, price, website);
+        });
+        return Optional.ofNullable(sneaker);
     }
 }
