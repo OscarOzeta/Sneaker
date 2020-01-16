@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.JDBCType;
+import java.sql.Types;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -20,7 +22,18 @@ public class SneakerDataAccessService implements SneakerDao {
 
     @Override
     public int insertSneaker(UUID id, Sneaker sneaker) {
-        return 0;
+        final String sql = "INSERT INTO sneaker(name, price, website) values(:name,:price,:website)";
+
+        final String insertSql = "INSERT INTO sneaker (id, name, price, website) VALUES (uuid_generate_v4(),?, ?, ?)";
+
+        Object[] params = new Object[] {sneaker.getName(), sneaker.getPrice(), sneaker.getWebsite()};
+
+        int[] types = new int[] {Types.VARCHAR, Types.DOUBLE,Types.VARCHAR};
+
+        int row = jdbcTemplate.update(insertSql, params, types);
+
+        return 1;
+
     }
 
     @Override
@@ -38,7 +51,13 @@ public class SneakerDataAccessService implements SneakerDao {
 
     @Override
     public int deleteSneakerById(UUID id) {
-        return 0;
+        String sql = "DELETE FROM sneaker WHERE id = ?";
+        Object[] params = {id};
+        sql.setObject();
+        Sneaker sneaker = jdbcTemplate.update(sql, params,(resultSet, i) ->{
+            UUID sneakerId = UUID.fromString(resultSet.getString("id"));
+        });
+        return 1;
     }
 
     @Override
