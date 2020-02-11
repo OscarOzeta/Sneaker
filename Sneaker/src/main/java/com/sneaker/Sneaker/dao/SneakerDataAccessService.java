@@ -53,10 +53,7 @@ public class SneakerDataAccessService implements SneakerDao {
     public int deleteSneakerById(UUID id) {
         String sql = "DELETE FROM sneaker WHERE id = ?";
         Object[] params = {id};
-        sql.setObject();
-        Sneaker sneaker = jdbcTemplate.update(sql, params,(resultSet, i) ->{
-            UUID sneakerId = UUID.fromString(resultSet.getString("id"));
-        });
+        int sneaker = jdbcTemplate.update(sql,params,id);
         return 1;
     }
 
